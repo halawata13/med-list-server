@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @default(autoincrement()) @id
+  email String @unique
+  password String
+  medicines Medicine[]
+}
+
+model Medicine {
+  id Int @default(autoincrement()) @id
+  name String
+  userId Int
+  hospital String?
+  prescriptionDate DateTime
+  type MedicineType
+  count Int
+  inUse Boolean
+  user User @relation(fields: [userId], references: [id])
+  @@index([id, inUse])
+}
+
+enum MedicineType {
+  STORE
+  PRESCRIPTION
+}
