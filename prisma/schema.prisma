@@ -13,6 +13,7 @@ datasource db {
 model User {
   id Int @default(autoincrement()) @id
   email String @unique
+  name String
   password String
   medicines Medicine[]
 }
@@ -22,7 +23,7 @@ model Medicine {
   name String
   userId Int
   hospital String?
-  prescriptionDate DateTime
+  prescriptionDate DateTime?
   type MedicineType
   count Int
   inUse Boolean

@@ -6,7 +6,7 @@ import { PrismaService } from '../prisma/prisma.service';
 export class MedicineService {
   constructor(private readonly prisma: PrismaService) {}
 
-  public async getAll(userId: number, inUse: boolean) {
+  async getAll(userId: number, inUse?: boolean) {
     return this.prisma.medicine.findMany({
       where: {
         userId,
@@ -15,14 +15,12 @@ export class MedicineService {
     });
   }
 
-  public async create(data: Prisma.MedicineCreateInput) {
-    return this.prisma.medicine.create({
-      data,
-    });
+  async create(data: Prisma.MedicineCreateInput) {
+    return this.prisma.medicine.create({ data });
   }
 
-  public async update(id: number, data: Prisma.MedicineUpdateInput) {
-    return this.prisma.user.update({
+  async update(id: number, data: Prisma.MedicineUpdateInput) {
+    return this.prisma.medicine.update({
       data,
       where: {
         id,
@@ -30,8 +28,8 @@ export class MedicineService {
     });
   }
 
-  public async delete(id: number) {
-    return this.prisma.user.delete({
+  async delete(id: number) {
+    return this.prisma.medicine.delete({
       where: {
         id,
       },
