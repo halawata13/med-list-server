@@ -25,7 +25,7 @@ model Medicine {
   hospital String?
   prescriptionDate DateTime?
   type MedicineType
-  count Int
+  stock Int
   inUse Boolean
   user User @relation(fields: [userId], references: [id])
   @@index([id, inUse])

@@ -17,7 +17,7 @@ CREATE TABLE `Medicine` (
     `hospital` VARCHAR(191) NULL,
     `prescriptionDate` DATETIME(3) NULL,
     `type` ENUM('STORE', 'PRESCRIPTION') NOT NULL,
-    `count` INTEGER NOT NULL,
+    `stock` INTEGER NOT NULL,
     `inUse` BOOLEAN NOT NULL,
 
     INDEX `Medicine_id_inUse_idx`(`id`, `inUse`),
